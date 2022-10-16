@@ -29,73 +29,139 @@ const materia1 = new Materia(
     01,
     "Croquet con Flamencos",
     "Lewis Carrol",
-    [" Conejo Blanco", " Oruga Azul", " Sombrerero Loco", " Reina de Corazones"],
+    ["Conejo Blanco", "Oruga Azul", "Sombrerero Loco", "Reina de Corazones"],
 );
 const materia2 = new Materia(
     02,
     "Quidditch",
     "J. K. Rowling",
-    ["Conejo Blanco", "Oruga Azul", "Sombrerero Loco", "Reina de Corazones"],
+    ["Harry Potter", "Ron Weasley", "Hermione Granger", "Draco Malfoy"],
 );
 const materia3 = new Materia(
     03,
     "Juegos del Hambre",
     "Lewis Carrol",
-    ["Conejo Blanco", "Oruga Azul", "Sombrerero Loco", "Reina de Corazones"],
+    ["Katniss Everdeen", "Peeta Mellark", "Gale Hawthorne", "Haymitch Abernathy"],
 );
 const materia4 = new Materia(
     04,
+    "Guerra de Cometas",
+    "Chuck Lorre",
+    ["Sheldon Copper", "Penny", "Leonard Hofstadter", "Howard Wolowitz"],
+);
+const materia5 = new Materia(
+    05,
+    "Ajedrez Tridimensional",
+    "Gene Roddenberry",
+    ["Spock", "James T. Kirk", "Nyota Uhura", "Leonard McCoy"],
+);
+const materia6 = new Materia(
+    06,
     "Razonamiento Deductivo",
     "Arthur Conan Doyle",
-    ["Conejo Blanco", "Oruga Azul", "Sombrerero Loco", "Reina de Corazones"],
+    ["Sherlock Holmes", "Moriarty", "Irene Adler", "John Watson"],
 );
 
 let cupo1 = false;
 let cupo2 = false;
 let cupo3 = false;
 let cupo4 = false;
+let cupo5 = false;
+let cupo6 = false;
 let nombreAlumno;
 let elegirMateria;
 let ciclo = false;
+let ciclo2 = false;
+let ciclo3 = false;
 
-nombreAlumno = prompt ("Ingrese nombre del alumno:");
+alert("Colegio para Seres Mágicos de CoderHouse.\n\nBienvenidos Alumnos/as de Primer Año!!!\nSe ha abierto la Inscripción para las Materias Deportivas.\nRecuerden que pueden anotarse en todas las materias que deseen.");
+
+do {
+    nombreAlumno = prompt ("Ingrese su nombre:");
+    if (!isNaN(nombreAlumno)) {
+    alert ("Somos Seres Mágicos, pero todavía usamos letras en nuestros nombres.");
+    } else {
+        alert (`Saludos ${nombreAlumno}!`);
+        ciclo2 = true;
+    }
+} while (ciclo2 == false);
+
 while (ciclo == false) {
-    let pregunta = prompt("Quieres anotarte?")
-    if (pregunta == "si") {
-        let elegirMateria = prompt("Qué materia\n1. Mat\n2. Lengua");
+    let pregunta = prompt(`¿Quieres registrarte? (s/n)`)
+    if (pregunta == "s") {
+        let elegirMateria = prompt("Elige tu materia deportiva.\n1. Croquet con Flamencos\n2. Quidditch\n3. Juegos del Hambre\n4. Guerra de Cometas\n5. Ajedrez Tridimensional\n6. Razonamiento Deductivo");
         if (elegirMateria == 1 && cupo1 ==  false) {
             materia1.agregarAlumno(nombreAlumno); 
             materia1.cantMaterias(nombreAlumno);
+            alert (`Te has anotado en ${materia1.nombre}!\nRecuerda llevar tus propios flamencos adiestrados a la clase.`);
             cupo1 = true; 
         } else if (elegirMateria == 2 && cupo2 == false) {
             materia2.agregarAlumno(nombreAlumno);
             materia2.cantMaterias(nombreAlumno);
+            alert (`Te has anotado en ${materia2.nombre}!\nLas pruebas para integrar el equipo comienzan la próxima semana. Buena Suerte!`);
             cupo2 = true;
         } else if (elegirMateria == 3 && cupo3 == false) {
             materia3.agregarAlumno(nombreAlumno);
             materia3.cantMaterias(nombreAlumno);
+            alert (`Te has anotado en ${materia3.nombre}!\nNo se preocupen! Es una versión adaptada. No es de vida o muerte... Solo de muerte.`);
             cupo3 = true;
         } else if (elegirMateria == 4 && cupo4 == false) {
             materia4.agregarAlumno(nombreAlumno);
             materia4.cantMaterias(nombreAlumno);
+            alert (`Te has anotado en ${materia4.nombre}!\nNOTA: Son frecuentes las quemaduras por cuerdas.`);
             cupo4 = true;
+        } else if (elegirMateria == 5 && cupo5 == false) {
+            materia5.agregarAlumno(nombreAlumno);
+            materia5.cantMaterias(nombreAlumno);
+            alert (`Te has anotado en ${materia5.nombre}!\nExcelente elección. La diversión se multiplica por tres!!!`);
+            cupo5 = true;
+        } else if (elegirMateria == 6 && cupo6 == false) {
+            materia6.agregarAlumno(nombreAlumno);
+            materia6.cantMaterias(nombreAlumno);
+            alert (`Te has anotado en ${materia6.nombre}!\nElemental mi Querido Watson.`);
+            cupo6 = true; 
+        } else if (elegirMateria >= 7 || isNaN(elegirMateria)) {
+            alert ("Opción inválida. Vuelva a intentar");
         } else {
-            alert ("Ya estás registrado en la materia");
+            alert ("Ya estás registrado en la materia.");
         }
-    } else {
-        alert ("Gracias");
+    } else if (!isNaN(pregunta)) {
+        alert ("Opción inválida. Vuelva a intentar");
+    } else if (pregunta == "n") {
+        alert ("A continuación te daremos información que puede resultarte muy útil.\n(En realidad no lo creo).");
         ciclo = true;
+    } else {
+        alert ("Opción inválida. Vuelva a intentar");
     }
 }
 
-let preguntaDos = prompt ("Quieres saber la cantidad de materias en las cuales te anotaste?");
-if (preguntaDos == "si") {
-    let total = materia1.cantidad + materia2.cantidad + materia3.cantidad + materia4.cantidad;
-    alert(total);
-}
+do {
+    let preguntaDos = prompt ("¿Quieres saber la cantidad de materias en las cuales te anotaste? (s/n).");
+    if (preguntaDos == "s") {
+        let total = materia1.cantidad + materia2.cantidad + materia3.cantidad + materia4.cantidad + materia5.cantidad + materia6.cantidad;
+        if (total == 1) {
+            alert("Te has anotado en: " + total + " materia.");
+            ciclo3 = true;
+        } else if (total == 0) {
+            alert("Te has anotado en: " + total + " materias.\n¿Entiendes el concepto de OJOTA en el deporte? No importa.\nEn el próximo semestre se vuelven a abrir las inscripciones.");
+            ciclo3 = true;
+        } else {
+            alert("Te has anotado en: " + total + " materias.");
+            ciclo3 = true;
+        } 
+    } else if (!isNaN(preguntaDos)) {
+        alert ("Respuesta inválida. Vuelva a intentar.");
+    } else if (preguntaDos == "n") {
+        alert ("OK! Espero que tengas buena memoria para recordarlo.");
+        ciclo3 = true; 
+    } else {
+        alert ("Respuesta inválida. Vuelva a intentar.");
+    }
+} while (ciclo3 == false);
+
 
 materia1.nombre = "cro";
-let preguntaTres = prompt ("Escribe el nombre de la materia");
+let preguntaTres = prompt ("Escribe el nombre abreviado de la materia y recibirás información de la misma.\nVerifica si estás anotado.\nNuestros amigos/as de Sistemas suelen comenter ciertos olvidos.");
 if (preguntaTres == "cro") {
     materia1.obtenerInformacion(preguntaTres);
 }
