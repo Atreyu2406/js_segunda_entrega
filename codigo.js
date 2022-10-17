@@ -3,15 +3,15 @@ class Materia {
         this.codigo = codigo, 
         this.nombre = nombre,
         this.profesor = profesor,
-        this.alumnos = [alumnos],
+        this.alumnos = alumnos,
         this.cantidad = 0;
     }
     agregarAlumno(alumno) {
         this.alumnos.push(alumno);
     }
     obtenerInformacion(materia) {
-        if (materia == this.nombre) {
-            alert(`El código es ${this.codigo}\nLos alumnos son: ${this.alumnos}`);
+        if (materia == this.codigo) {
+            alert(`Código: ${this.codigo}\nMateria: ${this.nombre}\nProfesor: ${this.profesor}\nAlumnos anotados: ${this.alumnos}`);
         } else {
             alert("La materia no existe");
         }
@@ -26,37 +26,37 @@ class Materia {
 }
 
 const materia1 = new Materia(
-    01,
+    1,
     "Croquet con Flamencos",
     "Lewis Carrol",
     ["Conejo Blanco", "Oruga Azul", "Sombrerero Loco", "Reina de Corazones"],
 );
 const materia2 = new Materia(
-    02,
+    2,
     "Quidditch",
     "J. K. Rowling",
     ["Harry Potter", "Ron Weasley", "Hermione Granger", "Draco Malfoy"],
 );
 const materia3 = new Materia(
-    03,
+    3,
     "Juegos del Hambre",
     "Lewis Carrol",
     ["Katniss Everdeen", "Peeta Mellark", "Gale Hawthorne", "Haymitch Abernathy"],
 );
 const materia4 = new Materia(
-    04,
+    25,
     "Guerra de Cometas",
     "Chuck Lorre",
     ["Sheldon Copper", "Penny", "Leonard Hofstadter", "Howard Wolowitz"],
 );
 const materia5 = new Materia(
-    05,
+    81,
     "Ajedrez Tridimensional",
     "Gene Roddenberry",
     ["Spock", "James T. Kirk", "Nyota Uhura", "Leonard McCoy"],
 );
 const materia6 = new Materia(
-    06,
+    221,
     "Razonamiento Deductivo",
     "Arthur Conan Doyle",
     ["Sherlock Holmes", "Moriarty", "Irene Adler", "John Watson"],
@@ -73,6 +73,8 @@ let elegirMateria;
 let ciclo = false;
 let ciclo2 = false;
 let ciclo3 = false;
+let ciclo4 = false;
+let preguntaTres;
 
 alert("Colegio para Seres Mágicos de CoderHouse.\n\nBienvenidos Alumnos/as de Primer Año!!!\nSe ha abierto la Inscripción para las Materias Deportivas.\nRecuerden que pueden anotarse en todas las materias que deseen.");
 
@@ -159,9 +161,27 @@ do {
     }
 } while (ciclo3 == false);
 
+do {
+    let preguntaTres = prompt ("Escribe el código de la materia y recibirás información de la misma.\nIngrese `esc` para salir del sistema.\nVerifica si estás anotado.\nNuestros amigos/as de Sistemas suelen cometer ciertos olvidos.\n\nCódigos: 1 - 2 - 3 - 25 - 81 - 221.");
+    if (preguntaTres == 1) {
+        materia1.obtenerInformacion(preguntaTres);
+    } else if (preguntaTres == 2) {
+        materia2.obtenerInformacion(preguntaTres);
+    } else if (preguntaTres == 3) {
+        materia3.obtenerInformacion(preguntaTres);
+    } else if (preguntaTres == 25) {
+        materia4.obtenerInformacion(preguntaTres);
+    } else if (preguntaTres == 81) {
+        materia5.obtenerInformacion(preguntaTres);
+    } else if (preguntaTres == 221) {
+        materia6.obtenerInformacion(preguntaTres);
+    } else if (preguntaTres == "esc") {
+        alert("Gracias por utilizar nuestro Sistema de Registro (no mágico) para Seres Mágicos de CoderHouse.");
+        break;
+    } else {
+        alert("El código es incorrecto");
+    }
+} while (isNaN(preguntaTres));
 
-materia1.nombre = "cro";
-let preguntaTres = prompt ("Escribe el nombre abreviado de la materia y recibirás información de la misma.\nVerifica si estás anotado.\nNuestros amigos/as de Sistemas suelen comenter ciertos olvidos.");
-if (preguntaTres == "cro") {
-    materia1.obtenerInformacion(preguntaTres);
-}
+
+
