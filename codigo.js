@@ -11,7 +11,7 @@ class Materia {
     }
     obtenerInformacion(materia) {
         if (materia == this.codigo) {
-            alert(`Código: ${this.codigo}\nMateria: ${this.nombre}\nProfesor: ${this.profesor}\nAlumnos anotados: ${this.alumnos}`);
+            alert(`Código: ${this.codigo}\nMateria: ${this.nombre}\nProfesor: ${this.profesor}\nAlumnos anotados:\n${this.alumnos.join(" => ")}`);
         } else {
             alert("La materia no existe");
         }
